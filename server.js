@@ -9,7 +9,7 @@ dotenv.config();
 
 app.use("/tcsl", tcslRoutes);
 
-app.listen(3001);
+app.listen(4000);
 
 app.get("/", (req, res) => {
   res.send("API is running");
