@@ -1,15 +1,18 @@
 const equipments = [
   {
     name: "Panasonic 1800 fridge",
-    equipmentId: 923021,
+    equipmentId: 121,
+    image: "121.jpg",
   },
   {
-    name: "Barbecue Deck",
-    equipmentId: 230042,
+    name: "Jii Work Table",
+    equipmentId: 151,
+    image: "151.jpg",
   },
   {
-    name: "Umbrella Top",
-    equipmentId: 124452,
+    name: "Swk Toaster",
+    equipmentId: 111,
+    image: "111.jpg",
   },
 ];
 
