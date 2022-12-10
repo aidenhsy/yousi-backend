@@ -1,14 +1,16 @@
-const axios = require("axios");
-const Equipment = require("../models/equipmentModel.js");
+let co = require("co");
+let OSS = require("ali-oss");
 
-const equipmentInfo = async (req, res) => {
-  try {
-    console.log("this was hit");
-    const equipment = await Equipment.find({});
-    res.json(equipment);
-  } catch (error) {
-    res.send(error);
+let uploadImage = (req, res) => {
+  let client = new OSS({
+    region: "oss-cn-shanghai",
+    accessKeyId: process.env.OSS_ACCESSKEYID,
+    accessKeySecret: process.env.OSS_ACCESSKEYSECRET,
+  });
+  if (req.files) {
+    let file = req.files.equipNo;
+    file.mv("./temp/" + file.name);
   }
 };
 
-module.exports = { equipmentInfo };
+module.exports = uploadImage;

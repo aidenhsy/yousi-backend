@@ -1,25 +1,23 @@
+const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
 
-const { connectMongoose, connectMySql } = require("./config/db");
-
-const tcslRoutes = require("./routes/tcslRoutes");
-const equipmentRoutes = require("./routes/equipmentRoutes");
-const wjRoutes = require("./routes/wjRoutes");
-const testRoutes = require("./routes/testRoutes");
-const app = express();
-
 dotenv.config();
 
-const mongo = connectMongoose();
-const mySql = connectMySql();
+const tcslRoutes = require("./routes/tcslRoutes");
+const wjRoutes = require("./routes/wjRoutes");
+const testRoutes = require("./routes/testRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
+
+const app = express();
+
+app.use(express.json());
 
 app.use("/tcsl", tcslRoutes);
-app.use("/equipments", equipmentRoutes);
 app.use("/wj", wjRoutes);
 app.use("/test", testRoutes);
-app.listen(4000, console.log("server running on 4000"));
+app.use("/upload", uploadRoutes);
 
-app.get("/", (req, res) => {
-  res.send("API is running");
-});
+app.use("./uploads", express.static(path.join(__dirname, "./uploads")));
+
+app.listen(4000, console.log("server running on 4000"));

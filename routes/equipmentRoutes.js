@@ -1,8 +1,8 @@
 const express = require("express");
+const uploadImage = require("../controllers/equipmentController");
+
 const router = express.Router();
 
-const { equipmentInfo } = require("../controllers/equipmentController.js");
-
-router.route("/info").post(equipmentInfo);
+router.route("/upload").post(uploadImage);
 
 module.exports = router;
